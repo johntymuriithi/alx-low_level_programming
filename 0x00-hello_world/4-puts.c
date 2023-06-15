@@ -1,9 +1,6 @@
 #include <stdio.h>
 
-/**
- * main Starting point
- * puts prints our message
- */
+/* main - Entry point */
 
 int main(void)
 {
