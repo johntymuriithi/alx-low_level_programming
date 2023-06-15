@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+
 /**
- * main - Entry point
- *
- * Return: Always return 0
+ * main - program entry point
+ * Return: always return 1
  */
-int main()
-{  
-    const char *message = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
-    write(2, message, strlen(message));
-    return (1);
+int main(void)
+{
+const char *data = "and that piece of art is useful\" \
+- Dora Korpar, 2015-10-19\n\0";
+unsigned long len = strlen(data);
+write(2, data, len);
+return (1);
 }
