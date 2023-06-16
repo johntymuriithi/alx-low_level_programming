@@ -8,10 +8,12 @@
  */
 int main(void)
 {
-	char d = 'A';
-	char b = tolower(d);
+	char c;
 
-	putchar(b);
+	for (c = 'a'; c <= 'z'; c++)
+	{
+		putchar(c);
+	}
 
 	return (0);
 }
