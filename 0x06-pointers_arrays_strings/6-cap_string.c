@@ -20,18 +20,23 @@ char *cap_string(char *str)
 
 	ptr = str;
 
-	while (*ptr != '\0')
+	if (len > 0)
 	{
-		for (i = 0; i <= len; i++)
-		{
-			if (*ptr == ' ' || *ptr == '.' || *ptr == '\t' || *ptr == '\n')
-			{
-				ptr++;
-				*ptr = toupper((unsigned char) *ptr);
-			}
-		}
+		*ptr = toupper((unsigned char) *ptr);
 
-		ptr++;
+		while (*ptr != '\0')
+		{
+			for (i = 0; i <= len; i++)
+			{
+				if (*ptr == ' ' || *ptr == '.' || *ptr == '\t' || *ptr == '\n')
+				{
+					ptr++;
+					*ptr = toupper((unsigned char) *ptr);
+				}
+			}
+
+			ptr++;
+		}
 	}
 	return (str);
 }
