@@ -1,24 +1,22 @@
-#include <stddef.h>
 #include "main.h"
 /**
- * _strchr - print the first occuerence of a character
- * @s: pointer variable
- * @c: character to compare
- * Return: return result
+ * _strchr - locates character in string
+ * @s: string to locate char
+ * @c: character to find
+ * Return: character value
  */
 char *_strchr(char *s, char c)
 {
-	char *ptr = s;
-	char *result = NULL;
+	int i;
 
-	while (*ptr != '\0')
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (*ptr == c)
+		if (s[i] == c)
 		{
-			result = ptr;
-			break;
+			return (s + i);
 		}
-		ptr++;
 	}
-	return (result);
+	if (s[i] == c)
+		return (s + i);
+	return (0);
 }
