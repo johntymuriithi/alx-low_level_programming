@@ -8,8 +8,8 @@
  */
 char *_strdup(char *str)
 {
-	char *ptr = str;
 	int i;
+	char *ptr = str;
 	int num = 0;
 	char *str2;
 
@@ -20,7 +20,7 @@ char *_strdup(char *str)
 	}
 	ptr = str;
 
-	str2 = (char *)malloc(num + 1 * sizeof(char));
+	str2 = (char *)malloc((num + 1) * sizeof(char));
 
 	if (str2 == NULL)
 	{
@@ -34,7 +34,7 @@ char *_strdup(char *str)
 			ptr++;
 		}
 		str2[num] = '\0';
+		return (str2);
 	}
-	return (str2);
-	free(str2);
+	free(str);
 }
