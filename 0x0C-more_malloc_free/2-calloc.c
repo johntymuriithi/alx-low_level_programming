@@ -27,3 +27,4 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		arr[index] = '\0';
 
 	return (arr);
+}

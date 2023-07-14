@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "main.h"
 /**
  * simple_print_buffer - prints buffer in hexa
  * @buffer: the address of memory to print
