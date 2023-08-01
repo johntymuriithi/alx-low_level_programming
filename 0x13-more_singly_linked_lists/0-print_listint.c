@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "lists.h"
 /**
- * print-listint - function to print out the elements of the linked list
+ * print_listint - function to print out the elements of the linked list
  * @h: head of the linked list
  *
  * Return: number of elements in the linked list
