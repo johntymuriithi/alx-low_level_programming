@@ -1,0 +1,44 @@
+#include "lists.h"
+
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
+{
+	dlistint_t* current = *h;
+	unsigned int i = 0;
+
+	dlistint_t* newNode = (dlistint_t*)malloc(sizeof(dlistint_t));
+	if (newNode == NULL)
+	{
+		return (NULL);
+	}
+	if (idx == 0)
+	{
+		newNode->n = n;
+		newNode->next = current;
+		if (current != NULL)
+		{
+			current->prev = newNode;
+		}
+		*h = newNode;
+		return (*h);
+	}
+	newNode->n = n;
+	while (current != NULL)
+	{
+		if (i == idx)
+		{
+			newNode->next = current;
+			newNode->prev = current->prev;
+			if (current->prev != NULL)
+			{
+				current->prev->next = newNode;
+			}
+			current->prev = newNode;
+			return (*h);
+		}
+		current = current->next;
+		i++;
+	}
+
+	free(newNode);
+	return (NULL);
+}
