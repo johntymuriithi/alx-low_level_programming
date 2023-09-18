@@ -1,4 +1,3 @@
 #!/bin/bash
-gcc -c *.c
-ar rc liball.a *.o
-ranlib liball.a
+c_files=$(find . -maxdepth 1 -type f -name "*.c")
+gcc -shared -o liball.so $c_files
