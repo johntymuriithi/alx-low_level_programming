@@ -1,35 +1,45 @@
 #include "hash_tables.h"
 
-int hash_table_set(hash_table_t *ht, const char *key, const char *value)
-{
-	int index;
-	hash_node_t *current_item, *item;
 
-	item = (hash_node_t*) malloc(sizeof(hash_node_t));
-	if (item == NULL) {
-		return (-1);
-	}
+hash_node_t *create_node(const char *key, const char *value) {
+    hash_node_t *new_node = (hash_node_t *)malloc(sizeof(hash_node_t));
+    if (new_node == NULL) {
+        return NULL;
+    }
 
-	item->key = (char*) malloc(strlen(key) + 1);
-	item->value = (char*) malloc(strlen(value) + 1);
+    new_node->key = strdup(key);
+    new_node->value = strdup(value);
+    new_node->next = NULL;
+    return new_node;
+}
 
-	strcpy(item->key, key);
-	strcpy(item->value, value);
+int hash_table_set(hash_table_t *ht, const char *key, const char *value) {
 
-	index = key_index((const unsigned char*)key, ht->size);
+    int index;
+        hash_node_t *current;
+        hash_node_t *new_node;
 
-	current_item = ht->array[index];
-	while (current_item != NULL) {
-		if (strcmp(current_item->key, key) == 0) {
+        index = key_index((const unsigned char*)key, ht->size);
+        current = ht->array[index];
 
-			strcpy(current_item->value, value);
-			return (0);
-		}
-		current_item = current_item->next;
-	}
-	item->next = ht->array[index];
-	ht->array[index] = item;
+    while (current != NULL) {
+        if (strcmp(current->key, key) == 0) {
 
-	return (0);
+            current->value = strdup(value);
+            if (current->value == NULL) {
+                return (0);
+            }
+            return (1);
+        }
+        current = current->next;
+    }
 
+    new_node = create_node(key, value);
+    if (new_node == NULL) {
+        return (0);
+    }
+    new_node->next = ht->array[index];
+    ht->array[index] = new_node;
+
+    return (1);
 }
